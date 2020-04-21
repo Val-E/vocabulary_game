@@ -1,0 +1,23 @@
+ body {
+ background-color: lightblue;
+}
+
+container { 
+  color: white;
+  text-align: center;
+}
+
+main {
+   background-color: white;
+   text-align: center;
+}
+
+button {
+   background-color: yellow;
+   width: 400px;
+   height: 100px;
+}
+
+footer {
+    text-align: left;
+}

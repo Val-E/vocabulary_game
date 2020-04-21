@@ -1,0 +1,21 @@
+table {
+   border: black 3px groove;
+   background: blue;
+   width: 200px;
+   height: 200px;
+   text-align: center;
+    
+}
+
+#nav {
+   width: 200px;
+   height: 30px;
+   margin: auto;
+   background: green;
+}
+
+td {
+    border: black 3px groove;
+    border-radius: 90px;
+    background: white;
+}
