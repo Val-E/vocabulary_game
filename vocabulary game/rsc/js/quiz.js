@@ -48,7 +48,7 @@ quiz_game =
       "<td><input type='button' value='Listen 3' onclick='getquestion(q3_3)'/></td>"+
    "</tr>"+
    "<tr>" +
-      "<td><center>3</center></td>"+
+      "<td><center>4</center></td>"+
       "<td><input type='button' value='Question 4' onclick='getquestion(q1_4)'/></td>"+
       "<td><input type='button' value='Question 4' onclick='getquestion(q2_4)'/></td>"+
       "<td><input type='button' value='Listen 4' onclick='getquestion(q3_4)'/></td>"+
