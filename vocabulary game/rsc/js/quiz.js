@@ -56,7 +56,7 @@ quiz_game =
 "</table>"+
 "<hr>";
 
-submit = "<ul><p>Question: <nav id='question'></nav></p><p><input id='answer' type='password'/><input type='submit' value='answer' onclick='check()'/></p></ul>"
+submit = "<ul><p>Question: <nav id='question'></nav></p><p><input id='answer' type='text'/><input type='submit' value='answer' onclick='check()'/></p></ul>"
 noquestions = "The questions for this level are runned out. Try a another level or a another category!"
 question = "";
 answer = "take";
@@ -156,14 +156,14 @@ function check() {
     }
     
     if (answer ==  useranswer) {
-        alert("You are right");
+        alert("You are right " + "Your answer: " + useranswer + "; " + " Correct answer: " + answer);
         teams[team_count] = teams[team_count] + points;
         setcounter();
         return;
     }
     
     else if (answer != useranswer) {
-        alert("You are wrong!");
+        alert("You are wrong! " + "Your answer: " + useranswer + "; " + " Correct answer: " + answer);
         teams[team_count] = teams[team_count] - points;
         setcounter();
         return;
