@@ -1,8 +1,8 @@
 
 
 /*
- Each q(...) is a question. The first number is the column (category), the secound is the (level). If you a 
- How you add question:
+ Each q(number)_(number) is a question. The first number is the column (category), the secound is the level. 
+ How you add/change question:
  q1_1 = [{'q': 'Your first Question.', 'a': 'the answer', 'p': 'the points for this question' }, ... {'q': '...', 'a': '...', p: '...' }, {'q': 'end'}]
  
  This object is at the end of each list and is not a question, but a necessary flag for the script. Make sure that you did not deleted it! 
@@ -25,6 +25,8 @@ q3_2 = [{'c': 1}, {'q': "<audio controls><source src='../vocabulary game/rsc/mis
 q3_3 = [{'c': 1}, {'q': "<audio controls><source src='../vocabulary game/rsc/misc/q3_3.mp3'></audion", 'a': 'leisure', 'p': 3}, {'q': 'end'}];
 q3_4 = [{'c': 1}, {'q': "<audio controls><source src='../vocabulary game/rsc/misc/q3_4.mp3'></audion", 'a': 'contemporary', 'p': 4}, {'q': 'end'}];
 
+
+//the main html-code for the quiz game
 quiz_game = 
 "<table border='5px'>" +
    "<tr>"+
@@ -56,13 +58,26 @@ quiz_game =
 "</table>"+
 "<hr>";
 
+//the html code for the submit area
 submit = "<ul><p>Question: <nav id='question'></nav></p><p><input id='answer' type='text'/><input type='submit' value='answer' onclick='check()'/></p></ul>"
 noquestions = "The questions for this level are runned out. Try a another level or a another category!"
+
+//saves the question
 question = "";
+
+//saves the correct answer
 answer = "take";
+
+//saves the user's answer
 useranswer = "";
+
+//save the points
 points = 0;
+
+//array archives the points of th and make them assignable
 teams = [];
+
+//variables to track rounds and teams
 team = 0;
 team_count = 0;
 round = 0;
@@ -71,6 +86,7 @@ teams_length = 0;
 team_length=0;
 i = 0;
 
+//main function 
 function quiz() {   
    team = Math.floor(Math.abs(document.getElementById('teams').value));
    round = Math.floor(Math.abs(document.getElementById('rounds').value));
@@ -78,6 +94,7 @@ function quiz() {
    teams_length = team;
    team_length = team;
    
+   //Error messages, if the players forget to say how many teams they are and how many rounds they want to play.
    if(team == 0 || team == '') {
       alert('Need at least one player/team.');
       return;
@@ -87,40 +104,57 @@ function quiz() {
          return;
    }
    
+   //adds elements to the array, with the value of 0
+   //the value are the points the player gets while playing
    while(team != 0) {
       teams.unshift(0);
       team--;
    }
    
+   //creates the game 
    document.getElementById('main').innerHTML = quiz_game;
    document.getElementById('addteams').innerHTML = "";
    document.getElementById('addrounds').innerHTML = "";
 }   
 
 
-
+//creates the submit area
 function setquestion(question) {
    document.getElementById('main').innerHTML = submit;
    document.getElementById('question').innerHTML = question;
-   
 }
 
+//function for setting up the questions 
 function getquestion(q_id) {
+   //setting up z to the name of the object
+   //so I can call z instead of checking each objects name
    var z = q_id;
+   
+   //setting up i to the counting element c at the beginning of each object
+   //so I can keep track of the questions, which were asked
    i = z[0].c;
    
+   //setting up the question
    question = z[i].q;
+   
+   //Error message, if no questions are left
    if (question == 'end') {
       alert(noquestions);
       return;
-    }
-
+    } 
+    
+   //increase the counting element by 1 
    z[0].c++;
+   
+   //set up the answer
    answer = z[i].a;
+   
+   //set up the points
    points = parseFloat(z[i].p);
    setquestion(question);
 }
 
+//function for keeping track of the teams and the rounds
 function setcounter() {
    answer = "take";
    teams_length--;
@@ -131,10 +165,12 @@ function setcounter() {
    }
    
    
-   round_count--;    
+   round_count--;
    if(round_count==0) {
+      //tells the players that the game is over
       alert('The Game is over.');
       var a = 0;
+      //creates the result page
       var score = "";
       for (t in teams) {
          a++;
@@ -144,17 +180,21 @@ function setcounter() {
     }
 }
 
-
+//function for checking the answers
 function check() {
+    //get the user's answer
     useranswer = document.getElementById('answer').value;
+    
     document.getElementById('main').innerHTML="";
     document.getElementById('main').innerHTML= quiz_game;
-        
+    
+    //Error message, if the player forget to pick a new question.
     if (answer == 'take') {
         alert('Please take a new question!')
         return;
     }
     
+    //this if close is true, if the answer is right
     if (answer ==  useranswer) {
         alert("You are right " + "Your answer: " + useranswer + "; " + " Correct answer: " + answer);
         teams[team_count] = teams[team_count] + points;
@@ -162,6 +202,7 @@ function check() {
         return;
     }
     
+    //this if close is true, if the answer is wrong
     else if (answer != useranswer) {
         alert("You are wrong! " + "Your answer: " + useranswer + "; " + " Correct answer: " + answer);
         teams[team_count] = teams[team_count] - points;
