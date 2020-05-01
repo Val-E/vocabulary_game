@@ -2,7 +2,8 @@
 <html>
    <head>
       <script type="text/javascript" src="rsc/js/quiz.js"></script>
-      <script type="text/javascript" src="rsc/js/row.js"></script>   
+      <script type="text/javascript" src="rsc/js/row.js"></script> 
+      <script type="text/javascript" src="rsc/js/memory.js"></script> 
       <link rel="stylesheet" type="text/css" href="rsc/css/css.css">
       <meta content="text/html; charset=UTF-8; charset=utf-8">
       <meta name="HandheldFriendly" content="false"/>
@@ -20,15 +21,16 @@
             <p> <img alt="Val-E" src="rsc/images/logo.png" height="200" weight="200"></p>
          </container>
          <ul>
-            <p id='addteams'>How many Players/Teams you are (Just required for the quiz game.): <input type='number' id='teams' placeholder='0'/></p>
+            <p id='addteams'>How many Players/Teams you are (Just required for the quiz and the memory.): <input type='number' id='teams' placeholder='0'/></p>
             <p id='addrounds'>How many rounds do you wanne play (Just required for the quiz game.): <input type='number' id='rounds' placeholder='0'/></p>
          </ul>
       </header>
       <main>
          <center id="main">
             <p>
-	           <button type="button" onclick="quiz()" onclick="teams()">Quiz</button>
-               <button type="button" onclick="row()">Four in a row</button>
+	           <button onclick="quiz()">Quiz</button>
+               <button onclick="row()" >Four in a row</button>
+               <button onclick="memory()">Memory</button>
             </p>
       	 </center>
       </main>
