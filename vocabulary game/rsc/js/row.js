@@ -1,4 +1,3 @@
-
 challenges = [
 /* You can add here your questions. 
    Form: {'q':"Your Question", 'a': 'Your answer'},
@@ -24,14 +23,14 @@ challenges = [
 {'q':'Freizeit', 'a':'leisure'},
 {'q':'umgebend', 'a':'surrounding'}, 
 {'q':'Streben', 'a':'pursuit'},
-{'q':'großartig, fantastisch, toll', 'a':'terrific'}, 
+{'q':'gro&szlig;artig, fantastisch, toll', 'a':'terrific'}, 
 {'q':'einzigartig', 'a':'unique'},
 {'q':'abhaken', 'a':'tick'}, 
 {'q':'im Gegensatz zu', 'a':'in contrast to'},
-{'q':'(be)f&ouml;rdern, aufsteigen; hier: werben für', 'a':'promote'}, 
+{'q':'(be)f&ouml;rdern, aufsteigen; hier: werben f&uuml;r', 'a':'promote'}, 
 {'q':'Apartheid', 'a':'apartheid'},
-{'q':'aushängen, an(zeigen)', 'a':'display'}, 
-{'q':'vorstellen; hier: einführen', 'a':'introduce'},
+{'q':'aush&auml;ngen, an(zeigen)', 'a':'display'}, 
+{'q':'vorstellen; hier: einf&uumlhren', 'a':'introduce'},
 {'q':'Ziel, Tor', 'a':'goal'}, 
 {'q':'vereinigen, verbinden', 'a':'unite'},
 {'q':'deshalb, deswegen, daher', 'a':'therefore'}, 
@@ -40,7 +39,7 @@ challenges = [
 {'q':'akkurat', 'a':'accurate'},
 {'q':'authentisch', 'a':'authentic'}, 
 {'q':'Einkommen', 'a':'income'},
-{'q':'sch&auml;tzen, zu schätzen wissen', 'a':'appreciate'}, 
+{'q':'sch&auml;tzen, zu sch&auml;tzen wissen', 'a':'appreciate'}, 
 {'q':'beruhigend', 'a':'calming'},
 {'q':'Zitat', 'a':'quote'}, 
 {'q':'oberhalb', 'a':'above'},
@@ -48,8 +47,8 @@ challenges = [
 {'q':'Bilderrahmen', 'a':'frame'},
 {'q':'Ursprung, Herkunft', 'a':'origin'}, 
 {'q':'Prozentsatz', 'a':'percentage'},
-{'q':'If you see this, you have a draw, you skipped to much questions and now we are runned out of them or you broke the program.', 'a':''}
-]
+//Error message, if the game run out of questions.
+{'q':'If you see this, you have a draw or the creator of this game added not enough questions.', 'a':''}]
 
 //html-code for the game
 row_game=
@@ -111,6 +110,9 @@ row_game=
 "</table>"+
 "<link rel='stylesheet' type='text/css' href='./rsc/css/row.css'>"
 
+//flag, becomes 1, if the player has to answer 
+using_flag = 0;
+
 //counts which questions are used
 counter = 0;
 
@@ -140,6 +142,7 @@ function row() {
    document.getElementById('addrounds').innerHTML = "";
 }
 function challenge() {
+   using_flag = 0;
    var answer = document.getElementById('answer').value;
    document.getElementById('submitter1').innerHTML= "";
    document.getElementById('submitter2').innerHTML= "";
@@ -148,7 +151,12 @@ function challenge() {
 }
 
 //function for creating the submit area and setting up the question
-function createchallenge(id) {
+function createchallenge(id) {   
+   if (using_flag == 1) { 
+   alert('You already have a question.')
+   return;
+}
+   using_flag = 1;
    quest_id = id;
    cha = challenges[counter].q;
    ans = challenges[counter].a;
