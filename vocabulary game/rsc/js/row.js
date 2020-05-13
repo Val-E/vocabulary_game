@@ -330,7 +330,7 @@ function check_win() {
    if(win==0) win = check_diagonal();
    if(win!=0) {
        if (win=='1') { var winpic = "<img height=500px width=900px src='./rsc/images/redwin.jpg'/>"; }
-       if (win=='2') { var winpic = "<img height=500px width=900px src='./rsc/images/yellowwin.jpg/>";}
+       if (win=='2') { var winpic = "<img height=500px width=900px src='./rsc/images/yellowwin.jpg'/>";}
        document.getElementById('main').innerHTML= winpic;
    }
 }
