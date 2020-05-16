@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script type="text/javascript" src="rsc/js/quiz.js"></script>
+      <script type="text/javascript" src="rsc/js/row.js"></script> 
+      <script type="text/javascript" src="rsc/js/memory.js"></script> 
+      <link rel="stylesheet" type="text/css" href="rsc/css/css.css">
+      <meta content="text/html; charset=UTF-8; charset=utf-8">
+      <meta name="HandheldFriendly" content="false"/>
+      <meta property="og:site_name" content="vocabulary game" />
+      <meta name="description" content="This is a Game to improve the language skills of students. This html-file was not create to be run on a server and was not checked for exploits. Please contact the host, if he disregarded that!">
+      <title>Vocabulary Game - by Val-E</title>
+   </head>            
+   <body>
+      <header>
+         <container>
+	        <div>
+               <h1>Vocabulary Game</h1>
+            </div>
+               <h4>powered by</h4>
+            <p> <img alt="Val-E" src="rsc/images/logo.png" height="200" weight="200"></p>
+         </container>
+         <ul>
+            <p id='addteams'>How many Players/Teams you are (Just required for the quiz and the memory.): <input type='number' id='teams' placeholder='0'/></p>
+            <p id='addrounds'>How many rounds do you wanne play (Just required for the quiz game.): <input type='number' id='rounds' placeholder='0'/></p>
+         </ul>
+      </header>
+      <main>
+         <center id="main">
+            <p>
+	           <button onclick="quiz()">Quiz</button>
+               <button onclick="row()" >Four in a row</button>
+               <button onclick="memory()">Memory</button>
+            </p>
+      	 </center>
+      </main>
+      <footer>
+         <center>
+            <p><div id="submitter1"></div></p>
+            <p><div id="submitter2"></div></p>
+         </center>   
+         <div>
+            <p>Support: </p>
+            <a href=README.txt> README</a>
+            <p>Email:</p>
+            <p>valentin.svet.12345@gmail.com;</p>
+            <p>val-e@secmail.pro;</p>
+         </div>
+      </footer>    
+   </body>
+</html>
